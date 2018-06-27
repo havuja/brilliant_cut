@@ -8,27 +8,26 @@ class Cutter
     data.each do |gem, value|
       @cut_data[gem.to_sym] = []
       sorted_cuts = value[:cuts].sort_by { |c| c[:size] }.reverse
-
       value[:rawChunks].each do |chunk|
         @cut_data[gem.to_sym].push({ gems: cut(sorted_cuts, chunk), chunk: chunk })
       end
-
     end
   end
 
-  # Resolve cuts
+  # Cut chunks to gems
   # @param cut_sizes [Array] Available cut sizes
   # @param chunk [Integer] Raw chunk size to cutted from
   # @param ready_cuts [Array] Ready made cuts to add
   # @return gems [Array] Possible cut sets as arrays from raw chunk
   def cut(cut_sizes, chunk, ready_cuts = [])
     gems = []
-
+    # Loop possible cut sizes
     cut_sizes.each do |cut|
       cuts = ready_cuts.flatten
       i = 0
-      other_cuts = cut_sizes.select { |c| c[:size] < cut[:size] }
-
+      # Collect smaller cuts
+      other_cuts = cut_sizes.select{ |c| c[:size] < cut[:size] }
+      # Save cut
       while (chunk / cut[:size]).floor > i do
         cuts.push(cut)
         gems.push(cuts.flatten)

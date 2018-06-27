@@ -6,7 +6,7 @@ require_relative 'cutter'
 # Read data from file
 begin
   input_file = File.read 'input.json'
-  data = JSON.parse(input_file, {symbolize_names: true})
+  data = JSON.parse(input_file, { symbolize_names: true })
 rescue
   puts "Cannot parse input file"
 end
