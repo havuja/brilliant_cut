@@ -3,7 +3,6 @@
 import sys
 import json
 import math
-from pprint import pprint
 
 def cutter(cut_sizes, chunk, ready_cuts = []):
     "Cutter function"

@@ -1,0 +1,10 @@
+{
+  "diamond": {
+    "cuts": [
+      {"size": 4, "value": 4},
+      {"size": 3, "value": 3},
+      {"size": 2, "value": 2}
+    ],
+    "rawChunks": [9]
+  }
+}
